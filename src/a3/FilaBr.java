@@ -39,12 +39,14 @@ public class FilaBr {
         if (front == null) {
             front = novo;
             length++;
+            System.out.println(elem+" "+ID+" "+length+" ");
             return;
         }
         do {
             if (aux.getNext() == null) {
                 aux.setNext(novo);
                 length++;
+                System.out.println(elem+" "+ID+" "+length+" ");
                 return;
             }
             aux = aux.getNext();
@@ -60,6 +62,7 @@ public class FilaBr {
             amigo.setNext(malandro);
             malandro.setPrev(amigo);
             length++;
+            System.out.println(elem+" "+ID+" "+length+" ");
         }else{
             NodeNome malandro = new NodeNome(elem);
             amigo.setNext(malandro);
@@ -84,6 +87,7 @@ public class FilaBr {
     public void desiste(NodeNome desiste) {
         if (desiste.getPrev() == null) {
             front = null;
+            length--;
             return;
         } else {
 

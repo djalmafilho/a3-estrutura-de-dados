@@ -67,6 +67,9 @@ public class ADMFila {
             } while (current != null);
             menorfila.incluiFinal(nome);
 
+        }finally{
+            this.imprime();
+            System.out.println();
         }
     }
 
