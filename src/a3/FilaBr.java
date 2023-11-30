@@ -1,5 +1,7 @@
 package a3;
 
+import java.util.ArrayList;
+
 public class FilaBr {
 
     private String ID;
@@ -33,20 +35,21 @@ public class FilaBr {
     }
 
     public void incluiFinal(String elem) {
+        System.out.print(" fim ");
         NodeNome novo = new NodeNome();
         novo.setInfo(elem);
         NodeNome aux = front;
         if (front == null) {
             front = novo;
             length++;
-            System.out.println(elem+" "+ID+" "+length+" ");
+            System.out.println(elem + " " + ID + " " + length + " ");
             return;
         }
         do {
             if (aux.getNext() == null) {
                 aux.setNext(novo);
                 length++;
-                System.out.println(elem+" "+ID+" "+length+" ");
+                System.out.println(elem + " " + ID + " " + length + " ");
                 return;
             }
             aux = aux.getNext();
@@ -54,6 +57,7 @@ public class FilaBr {
     }
 
     public void incluiMeio(NodeNome amigo, String elem) {
+        System.out.print(" meio ");
         if (amigo.getNext() != null) {
             NodeNome mane = amigo.getNext();
             NodeNome malandro = new NodeNome(elem);
@@ -62,8 +66,8 @@ public class FilaBr {
             amigo.setNext(malandro);
             malandro.setPrev(amigo);
             length++;
-            System.out.println(elem+" "+ID+" "+length+" ");
-        }else{
+            System.out.println(elem + " " + ID + " " + length + " ");
+        } else {
             NodeNome malandro = new NodeNome(elem);
             amigo.setNext(malandro);
             malandro.setPrev(amigo);
@@ -117,19 +121,38 @@ public class FilaBr {
 
     }
 
-    public int posicaoAmigo(String amigo) {
+    public int posicaoAmigo(ArrayList<String> amigos) {
         if (front == null)
             return -1;
-        int posicaoAmigo = 1;
+        int posicaoAmigo = this.length;
         NodeNome pessoaFila = this.front;
         do {
-            if (pessoaFila.getInfo().equals(amigo))
-                return posicaoAmigo;
-            posicaoAmigo++;
+            for (int i = 0; i < amigos.size(); i++) {
+                if (pessoaFila.getInfo().equals(amigos.get(i))) {
+                    posicaoAmigo = i;
+                }
+
+            }
             pessoaFila = pessoaFila.getNext();
         } while (pessoaFila != null);
 
-        return posicaoAmigo;
+        return posicaoAmigo +1;
+    }
+
+    public NodeNome melhorAmigo(ArrayList<String> amigos) {
+        NodeNome amigo = null;
+        NodeNome pessoaFila = this.front;
+        do {
+            for (int i = 0; i < amigos.size(); i++) {
+                if (pessoaFila.getInfo().equals(amigos.get(i))) {
+                    amigo = pessoaFila;
+                }
+
+            }
+            pessoaFila = pessoaFila.getNext();
+        } while (pessoaFila != null);
+
+        return amigo;
     }
 
     public void imprime() {

@@ -1,0 +1,6 @@
+grupo: Paul John George Ringo
+grupo: Bruce Steve Nicko Dave Adrian Josep
+criaFila: Fila1
+criaFila: Fila2
+chegou: Paul Bruce John Ringo Adrian Steve Nicko Josep Dave George
+imprime:

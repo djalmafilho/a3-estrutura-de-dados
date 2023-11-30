@@ -19,12 +19,13 @@ public class ADMFila {
             ArrayList<String> conhecidos = listaGrupos.conhecidos(nome);
             do {
                 int opcao = current.getLength();
-                for (int i = 0; i < conhecidos.size(); i++) {
-                    int posicao = current.posicaoAmigo(conhecidos.get(i));
-                    if (posicao < 0)
-                        posicao = current.getLength();
-                    if (opcao > posicao)
-                        opcao = posicao;
+                int posicao = current.posicaoAmigo(conhecidos);
+                if (posicao < 0) {
+                    current.incluiFinal(nome);
+                    return;
+                }
+                else if(posicao<opcao){
+                    opcao = posicao;
                 }
                 opcoes.add(opcao);
                 current = current.getNextFila();
@@ -37,18 +38,8 @@ public class ADMFila {
 
             }
             // encotra qual o amigo em melhor posi;'ao na mesma fila'
-            NodeNome melhorAmigo = null;
-            int melhorOpcao = current.getLength();
-            for (int i = 0; i < conhecidos.size(); i++) {
-                int posicao = current.posicaoAmigo(conhecidos.get(i));
-                if (posicao < 0) {
-                    posicao = current.getLength();
-                }
-                if (melhorOpcao > posicao) {
-                    melhorOpcao = posicao;
-                    melhorAmigo = current.busca(conhecidos.get(i));
-                }
-            }
+            NodeNome melhorAmigo = current.melhorAmigo(conhecidos);
+            
             if (melhorAmigo != null) {
                 current.incluiMeio(melhorAmigo, nome);
                 return;
