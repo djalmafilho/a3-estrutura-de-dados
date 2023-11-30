@@ -35,21 +35,21 @@ public class FilaBr {
     }
 
     public void incluiFinal(String elem) {
-        System.out.print(" fim ");
+        //System.out.print(" fim ");
         NodeNome novo = new NodeNome();
         novo.setInfo(elem);
         NodeNome aux = front;
         if (front == null) {
             front = novo;
             length++;
-            System.out.println(elem + " " + ID + " " + length + " ");
+            //System.out.println(elem + " " + ID + " " + length + " ");
             return;
         }
         do {
             if (aux.getNext() == null) {
                 aux.setNext(novo);
                 length++;
-                System.out.println(elem + " " + ID + " " + length + " ");
+                //System.out.println(elem + " " + ID + " " + length + " ");
                 return;
             }
             aux = aux.getNext();
@@ -57,7 +57,7 @@ public class FilaBr {
     }
 
     public void incluiMeio(NodeNome amigo, String elem) {
-        System.out.print(" meio ");
+        //System.out.print(" meio ");
         if (amigo.getNext() != null) {
             NodeNome mane = amigo.getNext();
             NodeNome malandro = new NodeNome(elem);
@@ -66,7 +66,7 @@ public class FilaBr {
             amigo.setNext(malandro);
             malandro.setPrev(amigo);
             length++;
-            System.out.println(elem + " " + ID + " " + length + " ");
+            //System.out.println(elem + " " + ID + " " + length + " ");
         } else {
             NodeNome malandro = new NodeNome(elem);
             amigo.setNext(malandro);
